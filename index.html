@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>HTML Document</title>
+
+  <!-- If you'd like to support IE8 -->
+  <script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/5.2.4/video-js.css">
+  <link rel="stylesheet" type="text/css" href="main.css"> 
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+   </head>
+   <body>
+  <div class="wrapper">
+  <audio id="audio_example" class="video-js vjs-default-skin" controls preload="none" width="0" height="0" data-setup='{}'>
+    <source src="http://yourstreamip:port/stream" type="audio/mp4">
+    Your browser doesn't support audio tag. Please download new Chrome or Firefox.
+  </audio>
+  </div>
+  
+  <div id="now-playing"></div> 
+  
+  <script>  
+    function show()  
+    {  
+        $.ajax({  
+            url: "current.php",  
+            cache: false,  
+            success: function(html){  
+                $("#now-playing").html(html);  
+            }  
+        });  
+    }  
+  
+    $(document).ready(function(){  
+        show();  
+        setInterval('show()',30000);  
+    });  
+    </script>  
+
+<script src="http://vjs.zencdn.net/5.2.4/video.js"></script>
+   </body>
+</html>
